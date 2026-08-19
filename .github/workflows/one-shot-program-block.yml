@@ -1,16 +1,15 @@
-# trigger: 2026-08-19T23:18+02:00
 name: One-shot program block migration
 
 on:
   push:
-    paths:
-      - '.github/workflows/one-shot-program-block.yml'
+    branches: [main]
 
 permissions:
   contents: write
 
 jobs:
   migrate:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -51,9 +50,11 @@ jobs:
 </section>'''
 
           pattern = re.compile(r'<!-- ============ PROGRAM / YEAR RING ============ -->.*?<!-- ============ FULL BLEED MOMENTS', re.S)
-          if not pattern.search(s):
+          if pattern.search(s):
+              s = pattern.sub(new_program + '\n\n<!-- ============ FULL BLEED MOMENTS', s, count=1)
+          elif 'PROGRAM / 2026-27 DATES' not in s:
               raise SystemExit('Program section marker not found')
-          s = pattern.sub(new_program + '\n\n<!-- ============ FULL BLEED MOMENTS', s, count=1)
+
           s = s.replace('"price": "25"', '"price": "20"')
           s = s.replace('Részvételi díj: 25 EUR / gyermek / alkalom.', 'Részvételi díj: 20 EUR / gyermek / alkalom.')
           s = s.replace('A részvételi díj 25 EUR / gyermek / alkalom', 'A részvételi díj 20 EUR / gyermek / alkalom')
