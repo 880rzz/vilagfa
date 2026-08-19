@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://becs.taltosdob.hu/sitemap.xml
+Sitemap: https://taltosdob.magyariskola.at/sitemap.xml
