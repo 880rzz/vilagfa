@@ -1,0 +1,51 @@
+name: Restore social icons and 16:00 schedule
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/restore-social-time.yml']
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply footer social icons and schedule
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+
+          s = s.replace('Havi egy alkalommal, szombat délután találkozunk.', 'Havi egy alkalommal, szombatonként 16:00-tól találkozunk.')
+          s = s.replace('Havi 1 alkalom, szombat délután', 'Havi 1 alkalom, szombatonként 16:00-tól')
+          s = s.replace('<div class="value">Szombat délután</div>', '<div class="value">Szombat 16:00-tól</div>')
+
+          s = s.replace('.social a{width:46px;height:46px;border-radius:50%;border:1px solid rgba(227,199,124,.3);display:grid;place-items:center;color:var(--gold-hi)}', '.social a{width:46px;height:46px;border-radius:50%;border:1px solid rgba(227,199,124,.3);display:grid;place-items:center;color:var(--gold-hi);transition:transform .2s ease,border-color .2s ease,background .2s ease}.social a:hover{transform:translateY(-2px);border-color:rgba(227,199,124,.65);background:rgba(255,255,255,.05)}.social a svg{width:21px;height:21px;display:block;fill:currentColor}')
+
+          old = '<div class="social"><a href="https://www.facebook.com/taltosdob" target="_blank" rel="noopener" aria-label="Facebook">f</a><a href="https://open.spotify.com/artist/6OJS2Y2KntijVTQWhIv0bo" target="_blank" rel="noopener" aria-label="Spotify">●</a></div>'
+          new = '''<div class="social"><a href="https://www.facebook.com/taltosdob" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.6 22v-9h3l.45-3.5H13.6V7.27c0-1.01.28-1.7 1.74-1.7H17.2V2.44c-.32-.04-1.42-.14-2.7-.14-2.67 0-4.5 1.63-4.5 4.63V9.5H7v3.5h3V22h3.6z"/></svg></a><a href="https://open.spotify.com/artist/6OJS2Y2KntijVTQWhIv0bo" target="_blank" rel="noopener" aria-label="Spotify"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.58 14.42a.62.62 0 0 1-.85.2c-2.34-1.43-5.28-1.75-8.74-.96a.62.62 0 1 1-.28-1.2c3.79-.87 7.04-.5 9.67 1.1.29.18.38.56.2.86zm1.21-2.7a.78.78 0 0 1-1.07.26c-2.68-1.65-6.77-2.13-9.94-1.16a.78.78 0 1 1-.46-1.49c3.63-1.11 8.14-.58 11.21 1.31.37.23.49.71.26 1.08zm.1-2.81C14.67 9 9.36 8.82 6.3 9.75a.94.94 0 1 1-.54-1.79c3.51-1.06 9.38-.85 13.09 1.35a.94.94 0 0 1-.96 1.6z"/></svg></a></div>'''
+          if old not in s:
+              raise SystemExit('Expected footer social block not found')
+          s = s.replace(old, new)
+          p.write_text(s, encoding='utf-8')
+
+          p = Path('jelentkezes.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('Havi egy szombat délután, 20 EUR / gyermek / alkalom.', 'Havi egy alkalom, szombatonként 16:00-tól, 20 EUR / gyermek / alkalom.')
+          s = s.replace('Havi egy szombati foglalkozás 6–14 éves gyerekeknek Bécsben.', 'Havi egy szombati foglalkozás 16:00-tól, 6–14 éves gyerekeknek Bécsben.')
+          s = s.replace('Havi egy alkalommal, szombat délután találkozunk.', 'Havi egy alkalommal, szombatonként 16:00-tól találkozunk.')
+          s = s.replace('havi 1 alkalom, szombat délután', 'havi 1 alkalom, szombatonként 16:00-tól')
+          s = s.replace('Havi 1 alkalom, szombat délután', 'Havi 1 alkalom, szombatonként 16:00-tól')
+          s = s.replace('A foglalkozások havi egy alkalommal, szombat délután zajlanak.', 'A foglalkozások havi egy alkalommal, szombatonként 16:00-tól zajlanak.')
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html jelentkezes.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Restore social icons and set Saturday 16:00 start"
+          git push
