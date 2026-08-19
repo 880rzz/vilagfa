@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://becs.taltosdob.hu/sitemap.xml
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+Sitemap: https://taltosdob.magyariskola.at/sitemap.xml
