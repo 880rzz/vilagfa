@@ -1,0 +1,43 @@
+name: One-shot logo swap
+
+on:
+  push:
+    paths:
+      - '.github/workflows/one-shot-logo-swap.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  swap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Replace site logo references
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          for name in ['index.html','jelentkezes.html','adatvedelem.html']:
+              p=Path(name)
+              if not p.exists():
+                  continue
+              s=p.read_text(encoding='utf-8')
+              s=s.replace('images/logo.png','images/logo-new.svg')
+              s=s.replace('/images/logo.png','/images/logo-new.svg')
+              p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit logo swap
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html jelentkezes.html adatvedelem.html 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Use new dragon logo across site"
+          git push origin HEAD:main
