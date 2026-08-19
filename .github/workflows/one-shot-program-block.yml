@@ -1,3 +1,4 @@
+# trigger: 2026-08-19T23:18+02:00
 name: One-shot program block migration
 
 on:
@@ -35,53 +36,16 @@ jobs:
     </div>
 
     <div class="months-rail reveal">
-      <div class="month-card">
-        <div class="month-name">2026. szeptember 27.</div>
-        <div class="month-theme">1. Bemutató óra — A magyarok eredete</div>
-        <ul><li>Kik voltak őseink?</li><li>Sztyeppei életmód, jurta, lovas népek</li><li>Sárkányok</li><li>Kézműves: rovásírás</li><li>Utána: élő dzsemelés felnőtteknek</li></ul>
-      </div>
-      <div class="month-card">
-        <div class="month-name">2026. október 24. · tervezett</div>
-        <div class="month-theme">2. Hunor és Magor</div>
-        <ul><li>A testvérpár története</li><li>A csodaszarvas üldözése</li><li>Új haza keresése</li><li>Tervezett kézműves: dobkészítés / dobverő</li><li>Utána: élő dzsemelés felnőtteknek</li></ul>
-      </div>
-      <div class="month-card">
-        <div class="month-name">2026. november 28.</div>
-        <div class="month-theme">3. Kerecseny — a fény születése</div>
-        <ul><li>Adventre készülődés</li><li>A fény és az ünnepi várakozás</li><li>Tervezett kézműves: adventi koszorú</li><li>Utána: élő dzsemelés felnőtteknek</li></ul>
-      </div>
-      <div class="month-card">
-        <div class="month-name">2027. január 16.</div>
-        <div class="month-theme">Attila és a hun hagyomány</div>
-        <ul><li>Attila király</li><li>Isten kardja</li><li>Csaba királyfi</li><li>Jelképek: turul és szarvas</li><li>Utána: élő dzsemelés felnőtteknek</li></ul>
-      </div>
-      <div class="month-card">
-        <div class="month-name">2027. február 13.</div>
-        <div class="month-theme">4. Emese álma és Álmos születése</div>
-        <ul><li>Turulmadár</li><li>Emese álma</li><li>Álmos jelentősége</li><li>Kézműves: tarsoly készítése</li><li>Utána: élő dzsemelés felnőtteknek</li></ul>
-      </div>
-      <div class="month-card">
-        <div class="month-name">2027. március 13.</div>
-        <div class="month-theme">5. Vérszerződés és Árpád</div>
-        <ul><li>A hét vezér</li><li>A vérszerződés</li><li>Árpád vezetővé választása</li><li>Utána: élő dzsemelés felnőtteknek</li></ul>
-      </div>
-      <div class="month-card">
-        <div class="month-name">2027. április 17.</div>
-        <div class="month-theme">6. A honfoglalás</div>
-        <ul><li>Vereckei-hágó</li><li>A Kárpát-medence elfoglalása</li><li>A fehér ló mondája</li><li>Utána: élő dzsemelés felnőtteknek</li></ul>
-      </div>
-      <div class="month-card">
-        <div class="month-name">2027. május 22.</div>
-        <div class="month-theme">7. Gyakorlás</div>
-        <ul><li>Magyar jelképek</li><li>Rovásírás</li><li>Táltosok és dobok</li><li>Hagyományőrzés</li><li>Utána: élő dzsemelés felnőtteknek</li></ul>
-      </div>
-      <div class="month-card">
-        <div class="month-name">2027. június 19. vagy 26. · egyeztetés alatt</div>
-        <div class="month-theme">Évzáró előadás</div>
-        <ul><li>Az év során tanult dalok és ritmusok</li><li>Közös évzáró műsor</li><li>Közösségi lezárás</li><li>Utána: élő dzsemelés felnőtteknek</li></ul>
-      </div>
+      <div class="month-card"><div class="month-name">2026. szeptember 27.</div><div class="month-theme">1. Bemutató óra — A magyarok eredete</div><ul><li>Kik voltak őseink?</li><li>Sztyeppei életmód, jurta, lovas népek</li><li>Sárkányok</li><li>Kézműves: rovásírás</li><li>Utána: élő dzsemelés felnőtteknek</li></ul></div>
+      <div class="month-card"><div class="month-name">2026. október 24. · tervezett</div><div class="month-theme">2. Hunor és Magor</div><ul><li>A testvérpár története</li><li>A csodaszarvas üldözése</li><li>Új haza keresése</li><li>Tervezett kézműves: dobkészítés / dobverő</li><li>Utána: élő dzsemelés felnőtteknek</li></ul></div>
+      <div class="month-card"><div class="month-name">2026. november 28.</div><div class="month-theme">3. Kerecseny — a fény születése</div><ul><li>Adventre készülődés</li><li>A fény és az ünnepi várakozás</li><li>Tervezett kézműves: adventi koszorú</li><li>Utána: élő dzsemelés felnőtteknek</li></ul></div>
+      <div class="month-card"><div class="month-name">2027. január 16.</div><div class="month-theme">Attila és a hun hagyomány</div><ul><li>Attila király</li><li>Isten kardja</li><li>Csaba királyfi</li><li>Jelképek: turul és szarvas</li><li>Utána: élő dzsemelés felnőtteknek</li></ul></div>
+      <div class="month-card"><div class="month-name">2027. február 13.</div><div class="month-theme">4. Emese álma és Álmos születése</div><ul><li>Turulmadár</li><li>Emese álma</li><li>Álmos jelentősége</li><li>Kézműves: tarsoly készítése</li><li>Utána: élő dzsemelés felnőtteknek</li></ul></div>
+      <div class="month-card"><div class="month-name">2027. március 13.</div><div class="month-theme">5. Vérszerződés és Árpád</div><ul><li>A hét vezér</li><li>A vérszerződés</li><li>Árpád vezetővé választása</li><li>Utána: élő dzsemelés felnőtteknek</li></ul></div>
+      <div class="month-card"><div class="month-name">2027. április 17.</div><div class="month-theme">6. A honfoglalás</div><ul><li>Vereckei-hágó</li><li>A Kárpát-medence elfoglalása</li><li>A fehér ló mondája</li><li>Utána: élő dzsemelés felnőtteknek</li></ul></div>
+      <div class="month-card"><div class="month-name">2027. május 22.</div><div class="month-theme">7. Gyakorlás</div><ul><li>Magyar jelképek</li><li>Rovásírás</li><li>Táltosok és dobok</li><li>Hagyományőrzés</li><li>Utána: élő dzsemelés felnőtteknek</li></ul></div>
+      <div class="month-card"><div class="month-name">2027. június 19. vagy 26. · egyeztetés alatt</div><div class="month-theme">Évzáró előadás</div><ul><li>Az év során tanult dalok és ritmusok</li><li>Közös évzáró műsor</li><li>Közösségi lezárás</li><li>Utána: élő dzsemelés felnőtteknek</li></ul></div>
     </div>
-
     <p style="margin-top:1.6rem;color:var(--parchment-dim);font-size:.9rem;line-height:1.7;position:relative;z-index:2;">Az októberi és a júniusi dátum, illetve egyes kézműves programpontok még egyeztetés alatt állnak. Egy alkalom fő részei: mese vagy monda, dobos dal, szimbólumok játékos megismerése, ritmus és közös dobolás, mozgás és játék, szünet, valamint az adott témához kapcsolódó kézműves foglalkozás.</p>
   </div>
 </section>'''
@@ -90,16 +54,12 @@ jobs:
           if not pattern.search(s):
               raise SystemExit('Program section marker not found')
           s = pattern.sub(new_program + '\n\n<!-- ============ FULL BLEED MOMENTS', s, count=1)
-
-          # A restored one-pager still contains the old 25 EUR copy. Only the fee is normalized here.
           s = s.replace('"price": "25"', '"price": "20"')
           s = s.replace('Részvételi díj: 25 EUR / gyermek / alkalom.', 'Részvételi díj: 20 EUR / gyermek / alkalom.')
           s = s.replace('A részvételi díj 25 EUR / gyermek / alkalom', 'A részvételi díj 20 EUR / gyermek / alkalom')
           s = s.replace('<div class="price-tag">25<sup>EUR</sup></div>', '<div class="price-tag">20<sup>EUR</sup></div>')
-
           p.write_text(s, encoding='utf-8')
 
-          # The separate blog page is no longer part of the requested architecture.
           blog = Path('blog/2026-27-tematika.html')
           if blog.exists():
               blog.unlink()
