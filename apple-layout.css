@@ -16,184 +16,178 @@
   --vf-display-leading: 1.02;
 }
 
-/* Base rule: Hungarian/Latin reading text follows the natural leading edge. */
 body {
   text-align: start;
 }
 
-p,
-li,
-blockquote,
-.contact-row .value,
-.contact-row small,
-.info-block .note,
-.program-note {
+body p,
+body li,
+body blockquote,
+body .contact-row .value,
+body .contact-row small,
+body .info-block .note,
+body .program-note {
   overflow-wrap: normal;
   word-break: normal;
   hyphens: auto;
   text-wrap: pretty;
 }
 
-p,
-li {
+body p,
+body li {
   line-height: var(--vf-copy-leading);
 }
 
-/* Display headings get balanced lines; prose does not. */
-h1,
-h2,
-h3,
-.theme,
-.date,
-.price,
-.format-card .value {
+body h1,
+body h2,
+body h3,
+body .theme,
+body .date,
+body .price,
+body .format-card .value {
   text-wrap: balance;
 }
 
-/* Long-form/content sections: default to leading-edge alignment. */
-.copy,
-.copy p,
-.layers,
-.layer,
-.learn-list,
-.learn-row,
-.month,
-.month ul,
-.contact-card,
-.contact-row,
-.info-grid,
-.info-block,
-.price-card,
-.program-note {
+body .copy,
+body .copy p,
+body .layers,
+body .layer,
+body .learn-list,
+body .learn-row,
+body .month,
+body .month ul,
+body .contact-card,
+body .contact-row,
+body .info-grid,
+body .info-block,
+body .price-card,
+body .program-note {
   text-align: start;
 }
 
-.copy p,
-.layer p,
-.info-block .note,
-.program-note {
+body .copy p,
+body .layer p,
+body .info-block .note,
+body .program-note {
   max-width: var(--vf-reading);
 }
 
-.month ul,
-.contact-row .value,
-.contact-row small,
-.price-list,
-.learn-row p {
+body .month ul,
+body .contact-row .value,
+body .contact-row small,
+body .price-list,
+body .learn-row p {
   max-width: var(--vf-reading-wide);
 }
 
-/* Apple-style centered display blocks: use centering only for short, intentional copy. */
-.hero,
-.quote,
-.section-head,
-.footer {
+/* Center only short display copy and intentionally symmetric sections. */
+body .hero,
+body .quote,
+body .section-head,
+body .footer {
   text-align: center;
 }
 
-.hero-inner,
-.section-head,
-.footer .wrap {
+body .hero-inner,
+body .section-head,
+body .footer .wrap {
   margin-inline: auto;
 }
 
-.hero h1 {
+body .hero h1 {
   max-width: var(--vf-display);
   line-height: .94;
   text-wrap: balance;
 }
 
-.hero-sub {
+body .hero-sub {
   max-width: 44ch;
   text-wrap: balance;
   line-height: 1.55;
 }
 
-.section-head {
+body .section-head {
   max-width: 760px;
 }
 
-.section-head h2 {
+body .section-head h2 {
   max-width: 18ch;
   margin-inline: auto;
   line-height: var(--vf-display-leading);
 }
 
-.section-head p {
+body .section-head p {
   max-width: var(--vf-section-head);
   margin-inline: auto;
   line-height: 1.62;
   text-wrap: pretty;
 }
 
-.quote blockquote {
+body .quote blockquote {
   max-width: 28ch;
   text-wrap: balance;
 }
 
-.footer h2 {
+body .footer h2 {
   max-width: 18ch;
   text-wrap: balance;
 }
 
-.footer > div > p,
-.footer-note {
+body .footer > div > p,
+body .footer-note {
   max-width: 54ch;
   margin-inline: auto;
 }
 
-/* Component alignment must be internally consistent. */
-.learn-row h3,
-.learn-row p,
-.month .date,
-.month .theme,
-.month li,
-.contact-card h3,
-.contact-row .label,
-.contact-row .value,
-.info-block h3,
-.format-card,
-.price-card,
-.price-list {
+body .learn-row h3,
+body .learn-row p,
+body .month .date,
+body .month .theme,
+body .month li,
+body .contact-card h3,
+body .contact-row .label,
+body .contact-row .value,
+body .info-block h3,
+body .format-card,
+body .price-card,
+body .price-list {
   text-align: start;
 }
 
-/* Don't force arbitrary line breaks through tiny columns. */
-.learn-row {
+/* Avoid narrow middle columns that create awkward Hungarian line breaks. */
+body .learn-row {
   grid-template-columns: 58px minmax(180px, .8fr) minmax(0, 1.7fr);
 }
 
-.contact-row .value,
-.contact-row small {
+body .contact-row .value,
+body .contact-row small {
   overflow-wrap: break-word;
 }
 
-/* Buttons, badges and compact navigation are labels, not reading text. */
-.btn,
-.hero-pill,
-.nav-menu .nav-cta,
-.tag,
-.eyebrow {
+body .btn,
+body .hero-pill,
+body .nav-menu .nav-cta,
+body .tag,
+body .eyebrow {
   text-align: center;
 }
 
-/* Mobile: narrower measure, same hierarchy. */
 @media (max-width: 900px) {
-  .feature-grid .copy,
-  .feature-grid.reverse .copy {
+  body .feature-grid .copy,
+  body .feature-grid.reverse .copy {
     max-width: 680px;
   }
 
-  .copy p {
+  body .copy p {
     max-width: 54ch;
   }
 
-  .learn-row {
+  body .learn-row {
     grid-template-columns: 48px minmax(0, 1fr);
     align-items: start;
   }
 
-  .learn-row p {
+  body .learn-row p {
     grid-column: 2;
   }
 }
@@ -204,52 +198,52 @@ h3,
     --vf-reading-wide: 100%;
   }
 
-  .hero h1 {
+  body .hero h1 {
     max-width: 9.4ch;
     line-height: .96;
   }
 
-  .hero-sub {
+  body .hero-sub {
     max-width: 31ch;
     line-height: 1.55;
   }
 
-  .section-head {
+  body .section-head {
     margin-bottom: 42px;
   }
 
-  .section-head h2 {
+  body .section-head h2 {
     max-width: 12.5ch;
   }
 
-  .section-head p {
+  body .section-head p {
     max-width: 32ch;
   }
 
-  .quote blockquote {
+  body .quote blockquote {
     max-width: 18ch;
   }
 
-  .copy h2,
-  .copy p,
-  .layers,
-  .month,
-  .contact-card,
-  .info-block,
-  .price-card,
-  .program-note {
+  body .copy h2,
+  body .copy p,
+  body .layers,
+  body .month,
+  body .contact-card,
+  body .info-block,
+  body .price-card,
+  body .program-note {
     text-align: start;
   }
 
-  .copy h2 {
+  body .copy h2 {
     max-width: 16ch;
   }
 
-  .learn-row {
+  body .learn-row {
     gap: 10px 14px;
   }
 
-  .month ul {
+  body .month ul {
     padding-left: 1.15rem;
   }
 }
