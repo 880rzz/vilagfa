@@ -1,0 +1,249 @@
+/*
+ * Világfa text + alignment system
+ * Based on Apple HIG principles: readable line lengths, consistent alignment,
+ * leading-edge scanning for longer text, centered display copy only where intentional,
+ * and responsive layout that preserves hierarchy across viewport sizes.
+ */
+
+:root {
+  --vf-reading-narrow: 34ch;
+  --vf-reading: 48ch;
+  --vf-reading-wide: 62ch;
+  --vf-display: 20ch;
+  --vf-section-head: 46ch;
+  --vf-gutter: clamp(20px, 5.5vw, 80px);
+  --vf-copy-leading: 1.72;
+  --vf-display-leading: 1.02;
+}
+
+body {
+  text-align: start;
+}
+
+body p,
+body li,
+body blockquote,
+body .contact-row .value,
+body .contact-row small,
+body .info-block .note,
+body .program-note {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: auto;
+  text-wrap: pretty;
+}
+
+body p,
+body li {
+  line-height: var(--vf-copy-leading);
+}
+
+body h1,
+body h2,
+body h3,
+body .theme,
+body .date,
+body .price,
+body .format-card .value {
+  text-wrap: balance;
+}
+
+body .copy,
+body .copy p,
+body .layers,
+body .layer,
+body .learn-list,
+body .learn-row,
+body .month,
+body .month ul,
+body .contact-card,
+body .contact-row,
+body .info-grid,
+body .info-block,
+body .price-card,
+body .program-note {
+  text-align: start;
+}
+
+body .copy p,
+body .layer p,
+body .info-block .note,
+body .program-note {
+  max-width: var(--vf-reading);
+}
+
+body .month ul,
+body .contact-row .value,
+body .contact-row small,
+body .price-list,
+body .learn-row p {
+  max-width: var(--vf-reading-wide);
+}
+
+/* Center only short display copy and intentionally symmetric sections. */
+body .hero,
+body .quote,
+body .section-head,
+body .footer {
+  text-align: center;
+}
+
+body .hero-inner,
+body .section-head,
+body .footer .wrap {
+  margin-inline: auto;
+}
+
+body .hero h1 {
+  max-width: var(--vf-display);
+  line-height: .94;
+  text-wrap: balance;
+}
+
+body .hero-sub {
+  max-width: 44ch;
+  text-wrap: balance;
+  line-height: 1.55;
+}
+
+body .section-head {
+  max-width: 760px;
+}
+
+body .section-head h2 {
+  max-width: 18ch;
+  margin-inline: auto;
+  line-height: var(--vf-display-leading);
+}
+
+body .section-head p {
+  max-width: var(--vf-section-head);
+  margin-inline: auto;
+  line-height: 1.62;
+  text-wrap: pretty;
+}
+
+body .quote blockquote {
+  max-width: 28ch;
+  text-wrap: balance;
+}
+
+body .footer h2 {
+  max-width: 18ch;
+  text-wrap: balance;
+}
+
+body .footer > div > p,
+body .footer-note {
+  max-width: 54ch;
+  margin-inline: auto;
+}
+
+body .learn-row h3,
+body .learn-row p,
+body .month .date,
+body .month .theme,
+body .month li,
+body .contact-card h3,
+body .contact-row .label,
+body .contact-row .value,
+body .info-block h3,
+body .format-card,
+body .price-card,
+body .price-list {
+  text-align: start;
+}
+
+/* Avoid narrow middle columns that create awkward Hungarian line breaks. */
+body .learn-row {
+  grid-template-columns: 58px minmax(180px, .8fr) minmax(0, 1.7fr);
+}
+
+body .contact-row .value,
+body .contact-row small {
+  overflow-wrap: break-word;
+}
+
+body .btn,
+body .hero-pill,
+body .nav-menu .nav-cta,
+body .tag,
+body .eyebrow {
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  body .feature-grid .copy,
+  body .feature-grid.reverse .copy {
+    max-width: 680px;
+  }
+
+  body .copy p {
+    max-width: 54ch;
+  }
+
+  body .learn-row {
+    grid-template-columns: 48px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  body .learn-row p {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --vf-reading: 100%;
+    --vf-reading-wide: 100%;
+  }
+
+  body .hero h1 {
+    max-width: 9.4ch;
+    line-height: .96;
+  }
+
+  body .hero-sub {
+    max-width: 31ch;
+    line-height: 1.55;
+  }
+
+  body .section-head {
+    margin-bottom: 42px;
+  }
+
+  body .section-head h2 {
+    max-width: 12.5ch;
+  }
+
+  body .section-head p {
+    max-width: 32ch;
+  }
+
+  body .quote blockquote {
+    max-width: 18ch;
+  }
+
+  body .copy h2,
+  body .copy p,
+  body .layers,
+  body .month,
+  body .contact-card,
+  body .info-block,
+  body .price-card,
+  body .program-note {
+    text-align: start;
+  }
+
+  body .copy h2 {
+    max-width: 16ch;
+  }
+
+  body .learn-row {
+    gap: 10px 14px;
+  }
+
+  body .month ul {
+    padding-left: 1.15rem;
+  }
+}
