@@ -157,17 +157,6 @@ body .month .theme { max-width: 24ch; }
 body .contact-card h3,
 body .info-block h3 { max-width: 24ch; }
 
-/* Navigation contract */
-body .nav-logo { min-width: 0; }
-body .nav-title { min-width: 0; max-width: min(68vw, 560px); }
-body .nav-title-main,
-body .nav-title-sub {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-body .nav-title-main { display: block; }
-body .nav-toggle { flex: 0 0 auto; }
-
 /* Registration page contract */
 body .form-hero { text-align: center; }
 body .form-hero h1 {
@@ -250,7 +239,7 @@ body > footer:not(.footer) { text-align: center; }
 }
 
 @media (max-width: 768px) {
-  body .hero h1 { max-width: 10ch; }
+  body .hero h1 { max-width: 10.8ch; }
   body .hero-sub { max-width: 38ch; }
   body .section-head { max-width: 620px; }
   body .section-head p { max-width: 42ch; }
@@ -264,26 +253,28 @@ body > footer:not(.footer) { text-align: center; }
     --vf-reading: 100%;
     --vf-reading-wide: 100%;
   }
-  body .nav { gap: 12px; }
-  body .nav-title { max-width: calc(100vw - 132px); }
-  body .nav-title-main {
+
+  body .hero .eyebrow {
+    max-width: none;
     white-space: nowrap;
-    text-overflow: ellipsis;
+    font-size: .64rem;
+    letter-spacing: .075em;
+    line-height: 1.25;
+    margin-inline: auto;
+    margin-bottom: 18px;
   }
+
   body .hero h1 {
-    max-width: 9.4ch;
-    line-height: .96;
+    max-width: 11.6ch;
+    line-height: .94;
+    font-size: clamp(2.85rem, 13vw, 4.35rem);
   }
+
   body .hero-sub {
-    max-width: 31ch;
+    max-width: 33ch;
     line-height: 1.55;
   }
-  body .hero-cta,
-  body .footer-cta {
-    width: min(100%, 360px);
-    margin-inline: auto;
-  }
-  body .hero-pill:not(:last-child)::after { margin-left: 12px; }
+
   body .section-head { margin-bottom: 42px; }
   body .section-head h2 { max-width: 12.5ch; }
   body .section-head p { max-width: 32ch; }
@@ -311,25 +302,34 @@ body > footer:not(.footer) { text-align: center; }
   body > main:not(.form-wrap) p,
   body > main:not(.form-wrap) li,
   body > main:not(.form-wrap) ul { max-width: none; }
+
+  /* Footer metadata is reading content, not display content. */
+  body .footer .footer-note {
+    width: 100%;
+    max-width: 34rem !important;
+    padding: 24px 0 0 !important;
+    text-align: start;
+    font-size: .82rem !important;
+    line-height: 1.65 !important;
+    text-wrap: pretty;
+  }
+
+  body .footer .footer-note br { display: block; }
 }
 
 @media (max-width: 390px) {
   body .wrap { width: calc(100% - 36px); }
-  body .nav {
-    padding-inline: 14px;
-    gap: 10px;
+
+  body .hero .eyebrow {
+    font-size: .61rem;
+    letter-spacing: .055em;
   }
-  body .nav-brand-logo { width: 38px; height: 38px; }
-  body .nav-toggle { width: 44px; height: 44px; }
-  body .nav-title { max-width: calc(100vw - 120px); }
-  body .nav-title-main { font-size: .92rem; }
+
   body .hero h1 {
-    max-width: 8.8ch;
-    font-size: clamp(2.85rem, 14.5vw, 4.2rem);
+    max-width: 11.7ch;
+    font-size: clamp(2.8rem, 12.9vw, 3.45rem);
   }
-  body .hero-sub { max-width: 29ch; }
-  body .hero-pills { gap: 6px 0; }
-  body .hero-pill { padding-inline: 7px; }
+  body .hero-sub { max-width: 30.5ch; }
   body .section-head h2 { max-width: 11.5ch; }
   body .section-head p { max-width: 30ch; }
   body .quote blockquote { max-width: 16.5ch; }
@@ -343,21 +343,31 @@ body > footer:not(.footer) { text-align: center; }
   body .highlight-box,
   body .gdpr-box { padding-inline: 1.1rem; }
   body .back-link { max-width: 15ch; line-height: 1.35; }
+
+  body .footer .footer-note {
+    max-width: 100% !important;
+    padding-inline: 2px !important;
+  }
 }
 
 @media (max-width: 340px) {
-  body .hero-pill:not(:last-child)::after { display: none; }
-  body .hero-pills { gap: 8px; }
-  body .hero-pill {
-    padding: 5px 9px;
-    border: 1px solid rgba(227,199,124,.22);
-    border-radius: 999px;
+  body .hero .eyebrow {
+    font-size: .565rem;
+    letter-spacing: .025em;
   }
+
+  body .hero h1 {
+    max-width: 11.6ch;
+    font-size: clamp(2.5rem, 12.5vw, 3rem);
+  }
+
   body .hero-cta,
   body .footer-cta {
-    flex-direction: column;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
   }
+
   body .hero-cta .btn,
   body .footer-cta .btn {
     width: 100%;
@@ -366,13 +376,8 @@ body > footer:not(.footer) { text-align: center; }
 
 @media (max-width: 320px) {
   body .wrap { width: calc(100% - 28px); }
-  body .nav-title { max-width: calc(100vw - 112px); }
-  body .nav-title-main { font-size: .86rem; }
-  body .hero h1 {
-    max-width: 8.2ch;
-    font-size: clamp(2.55rem, 14vw, 3.5rem);
-  }
-  body .hero-sub { max-width: 27ch; }
+  body .hero h1 { max-width: 11.5ch; }
+  body .hero-sub { max-width: 28ch; }
   body .section-head h2 { max-width: 10.5ch; }
   body .section-head p { max-width: 28ch; }
   body .btn { max-width: 100%; }
