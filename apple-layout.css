@@ -1,0 +1,255 @@
+/*
+ * Világfa text + alignment system
+ * Based on Apple HIG principles: readable line lengths, consistent alignment,
+ * leading-edge scanning for longer text, centered display copy only where intentional,
+ * and responsive layout that preserves hierarchy across viewport sizes.
+ */
+
+:root {
+  --vf-reading-narrow: 34ch;
+  --vf-reading: 48ch;
+  --vf-reading-wide: 62ch;
+  --vf-display: 20ch;
+  --vf-section-head: 46ch;
+  --vf-gutter: clamp(20px, 5.5vw, 80px);
+  --vf-copy-leading: 1.72;
+  --vf-display-leading: 1.02;
+}
+
+/* Base rule: Hungarian/Latin reading text follows the natural leading edge. */
+body {
+  text-align: start;
+}
+
+p,
+li,
+blockquote,
+.contact-row .value,
+.contact-row small,
+.info-block .note,
+.program-note {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: auto;
+  text-wrap: pretty;
+}
+
+p,
+li {
+  line-height: var(--vf-copy-leading);
+}
+
+/* Display headings get balanced lines; prose does not. */
+h1,
+h2,
+h3,
+.theme,
+.date,
+.price,
+.format-card .value {
+  text-wrap: balance;
+}
+
+/* Long-form/content sections: default to leading-edge alignment. */
+.copy,
+.copy p,
+.layers,
+.layer,
+.learn-list,
+.learn-row,
+.month,
+.month ul,
+.contact-card,
+.contact-row,
+.info-grid,
+.info-block,
+.price-card,
+.program-note {
+  text-align: start;
+}
+
+.copy p,
+.layer p,
+.info-block .note,
+.program-note {
+  max-width: var(--vf-reading);
+}
+
+.month ul,
+.contact-row .value,
+.contact-row small,
+.price-list,
+.learn-row p {
+  max-width: var(--vf-reading-wide);
+}
+
+/* Apple-style centered display blocks: use centering only for short, intentional copy. */
+.hero,
+.quote,
+.section-head,
+.footer {
+  text-align: center;
+}
+
+.hero-inner,
+.section-head,
+.footer .wrap {
+  margin-inline: auto;
+}
+
+.hero h1 {
+  max-width: var(--vf-display);
+  line-height: .94;
+  text-wrap: balance;
+}
+
+.hero-sub {
+  max-width: 44ch;
+  text-wrap: balance;
+  line-height: 1.55;
+}
+
+.section-head {
+  max-width: 760px;
+}
+
+.section-head h2 {
+  max-width: 18ch;
+  margin-inline: auto;
+  line-height: var(--vf-display-leading);
+}
+
+.section-head p {
+  max-width: var(--vf-section-head);
+  margin-inline: auto;
+  line-height: 1.62;
+  text-wrap: pretty;
+}
+
+.quote blockquote {
+  max-width: 28ch;
+  text-wrap: balance;
+}
+
+.footer h2 {
+  max-width: 18ch;
+  text-wrap: balance;
+}
+
+.footer > div > p,
+.footer-note {
+  max-width: 54ch;
+  margin-inline: auto;
+}
+
+/* Component alignment must be internally consistent. */
+.learn-row h3,
+.learn-row p,
+.month .date,
+.month .theme,
+.month li,
+.contact-card h3,
+.contact-row .label,
+.contact-row .value,
+.info-block h3,
+.format-card,
+.price-card,
+.price-list {
+  text-align: start;
+}
+
+/* Don't force arbitrary line breaks through tiny columns. */
+.learn-row {
+  grid-template-columns: 58px minmax(180px, .8fr) minmax(0, 1.7fr);
+}
+
+.contact-row .value,
+.contact-row small {
+  overflow-wrap: break-word;
+}
+
+/* Buttons, badges and compact navigation are labels, not reading text. */
+.btn,
+.hero-pill,
+.nav-menu .nav-cta,
+.tag,
+.eyebrow {
+  text-align: center;
+}
+
+/* Mobile: narrower measure, same hierarchy. */
+@media (max-width: 900px) {
+  .feature-grid .copy,
+  .feature-grid.reverse .copy {
+    max-width: 680px;
+  }
+
+  .copy p {
+    max-width: 54ch;
+  }
+
+  .learn-row {
+    grid-template-columns: 48px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .learn-row p {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --vf-reading: 100%;
+    --vf-reading-wide: 100%;
+  }
+
+  .hero h1 {
+    max-width: 9.4ch;
+    line-height: .96;
+  }
+
+  .hero-sub {
+    max-width: 31ch;
+    line-height: 1.55;
+  }
+
+  .section-head {
+    margin-bottom: 42px;
+  }
+
+  .section-head h2 {
+    max-width: 12.5ch;
+  }
+
+  .section-head p {
+    max-width: 32ch;
+  }
+
+  .quote blockquote {
+    max-width: 18ch;
+  }
+
+  .copy h2,
+  .copy p,
+  .layers,
+  .month,
+  .contact-card,
+  .info-block,
+  .price-card,
+  .program-note {
+    text-align: start;
+  }
+
+  .copy h2 {
+    max-width: 16ch;
+  }
+
+  .learn-row {
+    gap: 10px 14px;
+  }
+
+  .month ul {
+    padding-left: 1.15rem;
+  }
+}
