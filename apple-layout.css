@@ -16,9 +16,7 @@
   --vf-display-leading: 1.02;
 }
 
-body {
-  text-align: start;
-}
+body { text-align: start; }
 
 body p,
 body li,
@@ -34,9 +32,7 @@ body .program-note {
 }
 
 body p,
-body li {
-  line-height: var(--vf-copy-leading);
-}
+body li { line-height: var(--vf-copy-leading); }
 
 body h1,
 body h2,
@@ -44,11 +40,8 @@ body h3,
 body .theme,
 body .date,
 body .price,
-body .format-card .value {
-  text-wrap: balance;
-}
+body .format-card .value { text-wrap: balance; }
 
-/* Reading content always follows the leading edge. */
 body .copy,
 body .copy p,
 body .layers,
@@ -62,38 +55,27 @@ body .contact-row,
 body .info-grid,
 body .info-block,
 body .price-card,
-body .program-note {
-  text-align: start;
-}
+body .program-note { text-align: start; }
 
 body .copy p,
 body .layer p,
 body .info-block .note,
-body .program-note {
-  max-width: var(--vf-reading);
-}
+body .program-note { max-width: var(--vf-reading); }
 
 body .month ul,
 body .contact-row .value,
 body .contact-row small,
 body .price-list,
-body .learn-row p {
-  max-width: var(--vf-reading-wide);
-}
+body .learn-row p { max-width: var(--vf-reading-wide); }
 
-/* Center only short display copy and intentionally symmetric sections. */
 body .hero,
 body .quote,
 body .section-head,
-body .footer {
-  text-align: center;
-}
+body .footer { text-align: center; }
 
 body .hero-inner,
 body .section-head,
-body .footer .wrap {
-  margin-inline: auto;
-}
+body .footer .wrap { margin-inline: auto; }
 
 body .hero h1 {
   max-width: 12ch;
@@ -107,9 +89,7 @@ body .hero-sub {
   line-height: 1.55;
 }
 
-body .section-head {
-  max-width: 760px;
-}
+body .section-head { max-width: 760px; }
 
 body .section-head h2 {
   max-width: 18ch;
@@ -151,77 +131,97 @@ body .contact-row .value,
 body .info-block h3,
 body .format-card,
 body .price-card,
-body .price-list {
-  text-align: start;
-}
+body .price-list { text-align: start; }
 
-/* Avoid narrow middle columns that create awkward Hungarian line breaks. */
 body .learn-row {
   grid-template-columns: 58px minmax(180px, .8fr) minmax(0, 1.7fr);
 }
 
 body .contact-row .value,
-body .contact-row small {
-  overflow-wrap: break-word;
-}
+body .contact-row small { overflow-wrap: break-word; }
 
 body .btn,
 body .hero-pill,
 body .nav-menu .nav-cta,
 body .tag,
-body .eyebrow {
-  text-align: center;
-}
+body .eyebrow { text-align: center; }
 
-/* Keep content blocks optically anchored instead of floating in wide columns. */
 body .feature-grid .copy {
   justify-self: start;
   width: min(100%, 620px);
 }
 
-body .feature-grid.reverse .copy {
-  justify-self: start;
-}
-
-body .copy h2 {
-  max-width: 16ch;
-}
-
-body .month .theme {
-  max-width: 24ch;
-}
-
+body .feature-grid.reverse .copy { justify-self: start; }
+body .copy h2 { max-width: 16ch; }
+body .month .theme { max-width: 24ch; }
 body .contact-card h3,
-body .info-block h3 {
-  max-width: 24ch;
+body .info-block h3 { max-width: 24ch; }
+
+/* Registration page contract */
+body .form-hero { text-align: center; }
+body .form-hero h1 {
+  max-width: 16ch;
+  margin-inline: auto;
+  text-wrap: balance;
 }
+body .form-hero p {
+  max-width: 46ch;
+  margin-inline: auto;
+  text-align: center;
+  line-height: 1.62;
+  text-wrap: pretty;
+}
+body .form-wrap,
+body .card,
+body .program-summary,
+body fieldset,
+body .field,
+body .highlight-box,
+body .gdpr-box { text-align: start; }
+body .program-summary h2,
+body legend,
+body .field label,
+body .legend-note,
+body .hint,
+body .opt,
+body .gdpr-box { text-wrap: pretty; }
+body .program-summary h2,
+body legend { max-width: 28ch; }
+body .program-summary li,
+body .legend-note,
+body .gdpr-box { max-width: 58ch; }
+body .field label { max-width: 52ch; }
+body .opt { line-height: 1.5; }
+body .btn-submit { text-align: center; }
+
+/* Long-form legal/privacy page contract */
+body > main:not(.form-wrap) {
+  text-align: start;
+}
+body > main:not(.form-wrap) p,
+body > main:not(.form-wrap) li {
+  max-width: 68ch;
+  text-align: start;
+}
+body > main:not(.form-wrap) h2 {
+  max-width: 30ch;
+  text-align: start;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+body > main:not(.form-wrap) ul { max-width: 68ch; }
+body > footer:not(.footer) { text-align: center; }
 
 @media (min-width: 1200px) {
-  body .wrap {
-    width: min(1180px, calc(100vw - 2 * var(--vf-gutter)));
-  }
-
-  body .hero h1 {
-    max-width: 11.5ch;
-  }
-
-  body .section-head p {
-    max-width: 52ch;
-  }
+  body .wrap { width: min(1180px, calc(100vw - 2 * var(--vf-gutter))); }
+  body .hero h1 { max-width: 11.5ch; }
+  body .section-head p { max-width: 52ch; }
 }
 
 @media (max-width: 1024px) {
-  body .hero h1 {
-    max-width: 11ch;
-  }
-
-  body .feature-grid {
-    gap: clamp(36px, 5vw, 58px);
-  }
-
-  body .copy p {
-    max-width: 50ch;
-  }
+  body .hero h1 { max-width: 11ch; }
+  body .feature-grid { gap: clamp(36px, 5vw, 58px); }
+  body .copy p { max-width: 50ch; }
 }
 
 @media (max-width: 900px) {
@@ -231,45 +231,23 @@ body .info-block h3 {
     width: 100%;
     justify-self: stretch;
   }
-
-  body .copy p {
-    max-width: 54ch;
-  }
-
+  body .copy p { max-width: 54ch; }
   body .learn-row {
     grid-template-columns: 48px minmax(0, 1fr);
     align-items: start;
   }
-
-  body .learn-row p {
-    grid-column: 2;
-  }
-
-  body .section-head h2 {
-    max-width: 16ch;
-  }
+  body .learn-row p { grid-column: 2; }
+  body .section-head h2 { max-width: 16ch; }
 }
 
 @media (max-width: 768px) {
-  body .hero h1 {
-    max-width: 10ch;
-  }
-
-  body .hero-sub {
-    max-width: 38ch;
-  }
-
-  body .section-head {
-    max-width: 620px;
-  }
-
-  body .section-head p {
-    max-width: 42ch;
-  }
-
-  body .copy h2 {
-    max-width: 18ch;
-  }
+  body .hero h1 { max-width: 10ch; }
+  body .hero-sub { max-width: 38ch; }
+  body .section-head { max-width: 620px; }
+  body .section-head p { max-width: 42ch; }
+  body .copy h2 { max-width: 18ch; }
+  body .form-hero h1 { max-width: 13ch; }
+  body .form-hero p { max-width: 40ch; }
 }
 
 @media (max-width: 640px) {
@@ -277,33 +255,18 @@ body .info-block h3 {
     --vf-reading: 100%;
     --vf-reading-wide: 100%;
   }
-
   body .hero h1 {
     max-width: 9.4ch;
     line-height: .96;
   }
-
   body .hero-sub {
     max-width: 31ch;
     line-height: 1.55;
   }
-
-  body .section-head {
-    margin-bottom: 42px;
-  }
-
-  body .section-head h2 {
-    max-width: 12.5ch;
-  }
-
-  body .section-head p {
-    max-width: 32ch;
-  }
-
-  body .quote blockquote {
-    max-width: 18ch;
-  }
-
+  body .section-head { margin-bottom: 42px; }
+  body .section-head h2 { max-width: 12.5ch; }
+  body .section-head p { max-width: 32ch; }
+  body .quote blockquote { max-width: 18ch; }
   body .copy h2,
   body .copy p,
   body .layers,
@@ -311,87 +274,61 @@ body .info-block h3 {
   body .contact-card,
   body .info-block,
   body .price-card,
-  body .program-note {
-    text-align: start;
-  }
-
-  body .copy h2 {
-    max-width: 16ch;
-  }
-
-  body .learn-row {
-    gap: 10px 14px;
-  }
-
-  body .month ul {
-    padding-left: 1.15rem;
-  }
-
+  body .program-note { text-align: start; }
+  body .copy h2 { max-width: 16ch; }
+  body .learn-row { gap: 10px 14px; }
+  body .month ul { padding-left: 1.15rem; }
   body .month .theme,
   body .contact-card h3,
-  body .info-block h3 {
-    max-width: none;
+  body .info-block h3 { max-width: none; }
+  body .form-hero p {
+    max-width: 32ch;
+    text-align: center;
   }
+  body .program-summary h2,
+  body legend { max-width: 22ch; }
+  body > main:not(.form-wrap) p,
+  body > main:not(.form-wrap) li,
+  body > main:not(.form-wrap) ul { max-width: none; }
 }
 
-/* iPhone-class narrow widths: prevent orphan words and accidental pseudo-centering. */
 @media (max-width: 390px) {
-  body .wrap {
-    width: calc(100% - 36px);
-  }
-
+  body .wrap { width: calc(100% - 36px); }
   body .hero h1 {
     max-width: 8.8ch;
     font-size: clamp(2.85rem, 14.5vw, 4.2rem);
   }
-
-  body .hero-sub {
-    max-width: 29ch;
-  }
-
-  body .section-head h2 {
-    max-width: 11.5ch;
-  }
-
-  body .section-head p {
-    max-width: 30ch;
-  }
-
-  body .quote blockquote {
-    max-width: 16.5ch;
-  }
-
+  body .hero-sub { max-width: 29ch; }
+  body .section-head h2 { max-width: 11.5ch; }
+  body .section-head p { max-width: 30ch; }
+  body .quote blockquote { max-width: 16.5ch; }
   body .contact-card,
   body .info-block,
   body .price-card,
-  body .month {
-    text-align: start;
-  }
+  body .month { text-align: start; }
+  body .form-hero h1 { max-width: 11ch; }
+  body .form-hero p { max-width: 29ch; }
+  body .program-summary,
+  body .highlight-box,
+  body .gdpr-box { padding-inline: 1.1rem; }
+  body .back-link { max-width: 15ch; line-height: 1.35; }
 }
 
 @media (max-width: 320px) {
-  body .wrap {
-    width: calc(100% - 28px);
-  }
-
+  body .wrap { width: calc(100% - 28px); }
   body .hero h1 {
     max-width: 8.2ch;
     font-size: clamp(2.55rem, 14vw, 3.5rem);
   }
-
-  body .hero-sub {
-    max-width: 27ch;
-  }
-
-  body .section-head h2 {
-    max-width: 10.5ch;
-  }
-
-  body .section-head p {
-    max-width: 28ch;
-  }
-
-  body .btn {
-    max-width: 100%;
-  }
+  body .hero-sub { max-width: 27ch; }
+  body .section-head h2 { max-width: 10.5ch; }
+  body .section-head p { max-width: 28ch; }
+  body .btn { max-width: 100%; }
+  body .form-hero h1 { max-width: 10ch; }
+  body .form-hero p { max-width: 27ch; }
+  body .program-summary li,
+  body .legend-note,
+  body .field label,
+  body .opt,
+  body .gdpr-box { overflow-wrap: break-word; }
 }
