@@ -1,0 +1,39 @@
+name: Replace three uploaded photos
+on:
+  push:
+    paths:
+      - .github/workflows/replace-three-uploaded-photos.yml
+permissions:
+  contents: write
+jobs:
+  replace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace all three requested images
+        shell: bash
+        run: |
+          cp images/andrea-stage-2026.jpg images/uploaded-stage-20260829.jpg
+          cp images/andrea-family-2026.jpg images/uploaded-family-20260829.jpg
+          cp images/andrea-stage-2-2026.jpg images/uploaded-stage2-20260829.jpg
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          replacements={
+            'images/embedded_10.jpeg':'images/uploaded-stage-20260829.jpg',
+            'images/andrea-family-2026.jpg?v=20260829-2':'images/uploaded-family-20260829.jpg',
+            'images/andrea-family-2026.jpg':'images/uploaded-family-20260829.jpg',
+            'images/andrea-stage-2-2026.jpg?v=20260829-2':'images/uploaded-stage2-20260829.jpg',
+            'images/andrea-stage-2-2026.jpg':'images/uploaded-stage2-20260829.jpg'
+          }
+          for old,new in replacements.items():
+              s=s.replace(old,new)
+          p.write_text(s)
+          PY
+          file images/uploaded-*.jpg
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add index.html images/uploaded-*.jpg
+          git commit -m "Replace three requested images with uploaded photos" || exit 0
+          git push
