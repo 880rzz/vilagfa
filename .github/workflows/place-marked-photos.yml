@@ -1,0 +1,53 @@
+name: Place marked photos
+
+on:
+  push:
+    paths:
+      - '.github/workflows/place-marked-photos.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  place:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Place photos in marked areas
+        shell: bash
+        run: |
+          cp images/andrea-family-2026.jpg images/andrea-family-final-2026.jpg
+          cp images/andrea-stage-2-2026.jpg images/andrea-stage-2-final-2026.jpg
+          cp images/andrea-stage-2026.jpg images/andrea-oromzene-final-2026.jpg
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+
+          # Do not reuse the same newly supplied photo elsewhere.
+          s=s.replace('images/andrea-stage-2026.jpg?v=20260829-2','images/embedded_10.jpeg')
+          s=s.replace('images/andrea-stage-2026.jpg','images/embedded_10.jpeg')
+          s=s.replace('images/andrea-family-2026.jpg?v=20260829-2','images/andrea-family-final-2026.jpg')
+          s=s.replace('images/andrea-family-2026.jpg','images/andrea-family-final-2026.jpg')
+          s=s.replace('images/andrea-stage-2-2026.jpg?v=20260829-2','images/andrea-stage-2-final-2026.jpg')
+          s=s.replace('images/andrea-stage-2-2026.jpg','images/andrea-stage-2-final-2026.jpg')
+
+          # Add a distinct supplied photo below the practical-information card
+          # in the exact empty area marked by the user.
+          start=s.index('<section class="section section-light" id="oromzene">')
+          end=s.index('<section class="section contact" id="kapcsolat">')
+          sec=s[start:end]
+          if 'andrea-oromzene-final-2026.jpg' not in sec:
+              old='</p></div></div></div></section>'
+              new='</p><div class="media oromzene-photo" style="margin-top:24px"><img src="images/andrea-oromzene-final-2026.jpg" alt="A Regélő Fehér Táltos Dobcsapat közös zenélése"></div></div></div></div></section>'
+              sec=sec.replace(old,new,1)
+              s=s[:start]+sec+s[end:]
+
+          p.write_text(s,encoding='utf-8')
+          PY
+          rm .github/workflows/place-marked-photos.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html images .github/workflows/place-marked-photos.yml
+          git commit -m "Place distinct photos in marked Vilagfa areas"
+          git push
