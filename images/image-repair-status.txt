@@ -1,0 +1,1 @@
+Image repair will use browser-safe inline fallbacks while binary assets are replaced.
