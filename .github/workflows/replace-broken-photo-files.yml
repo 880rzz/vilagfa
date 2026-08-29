@@ -1,0 +1,41 @@
+name: Replace broken photo files
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/replace-broken-photo-files.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  replace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Download the two newly uploaded photos
+        run: |
+          set -euo pipefail
+          mkdir -p images
+          curl -fL --retry 3 'https://static.wixstatic.com/media/b0aee1_90469940815e4bd69e401b02703b1d74~mv2.jpg' -o images/andrea-family-final-2026.jpg
+          curl -fL --retry 3 'https://static.wixstatic.com/media/b0aee1_c9cc7b50b2cd4dc9bde1445b9c06a45c~mv2.jpg' -o images/andrea-stage-2-2026.jpg
+          test "$(head -c 2 images/andrea-family-final-2026.jpg | xxd -p)" = "ffd8"
+          test "$(head -c 2 images/andrea-stage-2-2026.jpg | xxd -p)" = "ffd8"
+          file images/andrea-family-final-2026.jpg
+          file images/andrea-stage-2-2026.jpg
+      - name: Commit replacement photos
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add images/andrea-family-final-2026.jpg images/andrea-stage-2-2026.jpg
+          if git diff --cached --quiet; then
+            echo 'No image changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Replace two broken Andrea photos with uploaded originals'
+          git push origin HEAD:main
