@@ -1,0 +1,78 @@
+name: Reduce heading scale
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/reduce-heading-scale.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  adjust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reduce H1 and H2 sizes
+        run: |
+          cat >> apple-layout.css <<'EOF'
+
+/* 2026-08-29 — refined display type scale */
+body .hero h1 {
+  font-size: clamp(2.65rem, 5.2vw, 4.9rem);
+  line-height: .98;
+}
+body .copy h2 {
+  font-size: clamp(1.95rem, 3vw, 2.95rem);
+  line-height: 1.06;
+}
+body .section-head h2 {
+  font-size: clamp(2rem, 3.15vw, 3.05rem);
+  line-height: 1.06;
+}
+body .footer h2 {
+  font-size: clamp(2rem, 3.35vw, 3.2rem);
+  line-height: 1.05;
+}
+body .form-hero h1 {
+  font-size: clamp(2.35rem, 4.5vw, 4.25rem);
+  line-height: 1;
+}
+body > main:not(.form-wrap) h1 {
+  font-size: clamp(2.35rem, 4.5vw, 4.1rem);
+  line-height: 1.02;
+}
+body > main:not(.form-wrap) h2 {
+  font-size: clamp(1.7rem, 2.7vw, 2.5rem);
+  line-height: 1.1;
+}
+
+@media (max-width: 640px) {
+  body .hero h1 {
+    font-size: clamp(2.35rem, 10vw, 3.15rem);
+    line-height: .99;
+  }
+  body .copy h2,
+  body .section-head h2 {
+    font-size: clamp(1.85rem, 8vw, 2.45rem);
+  }
+  body .footer h2 {
+    font-size: clamp(1.95rem, 8.5vw, 2.6rem);
+  }
+  body .form-hero h1,
+  body > main:not(.form-wrap) h1 {
+    font-size: clamp(2.1rem, 9vw, 2.9rem);
+  }
+}
+EOF
+      - name: Commit heading scale
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apple-layout.css
+          git commit -m 'Reduce H1 and H2 typography scale'
+          git push origin HEAD:main
