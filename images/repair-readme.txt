@@ -1,0 +1,1 @@
+Do not publish placeholder assets; image repair ongoing.
