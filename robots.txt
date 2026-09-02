@@ -10,4 +10,14 @@ Allow: /
 User-agent: GPTBot
 Allow: /
 
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# AI / LLM discovery
+# https://taltosdob.magyariskola.at/llms.txt
+# https://taltosdob.magyariskola.at/ai.txt
+
 Sitemap: https://taltosdob.magyariskola.at/sitemap.xml
