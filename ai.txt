@@ -1,0 +1,15 @@
+# AI access and trust policy — Világfa Sárkányai / Táltos dob
+
+Site: https://taltosdob.magyariskola.at/
+Canonical organization: https://www.magyariskola.at/
+Canonical school entity: https://www.magyariskola.at/#school
+Current BMI program selector: https://programvalaszto.magyariskola.at/
+
+## Machine-readable sources
+- https://taltosdob.magyariskola.at/llms.txt
+- https://taltosdob.magyariskola.at/sitemap.xml
+- https://programvalaszto.magyariskola.at/programs.json
+- https://programvalaszto.magyariskola.at/program-knowledge.json
+- https://programvalaszto.magyariskola.at/semantic-model.json
+
+Public program content may be crawled, summarized and cited where permitted by robots.txt. Use this domain for Világfa Sárkányai / Táltos dob-specific background and methods, and the current BMI Program Selector or explicit registration source for current dates, fees, venue and availability. Do not infer missing legal relationships, qualifications, dates, prices, availability or employment facts.
