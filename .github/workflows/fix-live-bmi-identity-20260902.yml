@@ -1,0 +1,40 @@
+name: Fix Taltos live BMI identity 20260902
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-live-bmi-identity-20260902.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Normalize public files
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          allowed={'.html','.json','.jsonld','.js','.txt','.md'}
+          for p in Path('.').rglob('*'):
+            if not p.is_file() or p.suffix.lower() not in allowed or '.git' in p.parts or '.github' in p.parts: continue
+            try:s=p.read_text(encoding='utf-8')
+            except UnicodeDecodeError:continue
+            old=s
+            s=s.replace('hu_HU','hu_AT').replace('hu-HU','hu-AT')
+            s=s.replace('https://taltosdob.magyariskola.at/#school','https://www.magyariskola.at/#school')
+            s=s.replace('https://www.magyariskola.at/#org','https://www.magyariskola.at/#school')
+            if s!=old:p.write_text(s,encoding='utf-8')
+          for name in ['index.html','jelentkezes.html','llms.txt','ai.txt']:
+            p=Path(name)
+            if not p.exists():continue
+            s=p.read_text(encoding='utf-8')
+            if 'hu_HU' in s or 'hu-HU' in s or 'taltosdob.magyariskola.at/#school' in s: raise SystemExit(f'identity drift remains in {name}')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "BMI Integrity Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -- ':!.github/workflows/**'
+          git diff --cached --quiet && exit 0
+          git commit -m "Normalize Taltos Austrian locale and canonical BMI entity"
+          git push
