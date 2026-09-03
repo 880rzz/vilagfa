@@ -1,0 +1,61 @@
+name: Normalize Vilagfa LLM graph
+on:
+  push:
+    paths:
+      - '.github/workflows/normalize-llm-graph-20260903.yml'
+permissions:
+  contents: write
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Normalize embedded JSON-LD
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,json
+          p=Path('index.html'); s=p.read_text(encoding='utf-8')
+          m=re.search(r'<script type="application/ld\+json">\s*(\{.*?\})\s*</script>',s,re.S)
+          if not m: raise SystemExit('JSON-LD not found')
+          data=json.loads(m.group(1)); g=data['@graph']
+          teacher='https://tanarok.magyariskola.at/#hupczik-andrea'
+          school='https://www.magyariskola.at/#school'
+          old='https://taltosdob.magyariskola.at/#hupczik-andrea'
+          def repl(x):
+              if isinstance(x,dict):
+                  for k,v in list(x.items()):
+                      if k=='@id' and v==old: x[k]=teacher
+                      else: repl(v)
+              elif isinstance(x,list):
+                  for v in x: repl(v)
+          repl(data)
+          for n in g:
+              if n.get('@id')==teacher:
+                  n['url']=teacher; n['jobTitle']='Foglalkozásvezető és helyi kapcsolattartó'
+              if n.get('@id')=='https://taltosdob.magyariskola.at/#website':
+                  n['publisher']={'@id':school}; n['about']={'@id':'https://taltosdob.magyariskola.at/#event-series'}
+              if n.get('@id')=='https://taltosdob.magyariskola.at/#event-series':
+                  n['offers']=[o for o in n.get('offers',[]) if 'örömzene' not in o.get('name','').lower()]
+                  existing={e.get('startDate','')[:10] for e in n.get('subEvent',[])}
+                  for d in ['2027-03-13','2027-04-17','2027-05-22']:
+                      if d not in existing:
+                          n.setdefault('subEvent',[]).append({'@type':'Event','name':'Világfa Sárkányai gyermekfoglalkozás','startDate':d+'T16:00:00+01:00' if d<'2027-03-28' else d+'T16:00:00+02:00','location':{'@id':'https://taltosdob.magyariskola.at/#venue'}})
+          orom_id='https://www.magyariskola.at/event-details/oromzene-2026#event-series'
+          if not any(n.get('@id')==orom_id for n in g):
+              g.append({'@type':'EventSeries','@id':orom_id,'name':'Együtt dobban Bécs – Közös örömzene','url':'https://www.magyariskola.at/event-details/oromzene-2026','description':'Külön, állandó BMI partnerprogram a Világfa Sárkányai napjain, 18:00 órai kezdéssel. Felnőtteknek is ajánlható; zenei vagy dobos előképzettség nem szükséges.','inLanguage':'hu-AT','organizer':{'@id':school},'performer':{'@id':teacher},'location':{'@id':'https://taltosdob.magyariskola.at/#venue'},'offers':{'@type':'Offer','price':'5','priceCurrency':'EUR','url':'https://www.magyariskola.at/event-details/oromzene-2026'}})
+          new=json.dumps(data,ensure_ascii=False,indent=2)
+          s=s[:m.start(1)]+new+s[m.end(1):]
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Validate and commit
+        run: |
+          grep -q 'https://tanarok.magyariskola.at/#hupczik-andrea' index.html
+          grep -q 'oromzene-2026#event-series' index.html
+          ! grep -q 'https://taltosdob.magyariskola.at/#hupczik-andrea' index.html
+          git config user.name "BMI Entity Audit Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Separate Oromzene and normalize Vilagfa person graph"
+          git push
