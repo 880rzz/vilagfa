@@ -31,22 +31,233 @@
 <meta name="twitter:image" content="https://taltosdob.magyariskola.at/images/social-share.png">
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@graph":[
-    {"@type":"WebSite","@id":"https://taltosdob.magyariskola.at/#website","url":"https://taltosdob.magyariskola.at/","name":"Világfa Sárkányai — Gyermek Dobcsapat","inLanguage":"hu-AT"},
-    {"@type":"WebPage","@id":"https://taltosdob.magyariskola.at/#webpage","url":"https://taltosdob.magyariskola.at/","name":"Magyar gyermek dobcsapat Bécsben | Világfa Sárkányai","isPartOf":{"@id":"https://taltosdob.magyariskola.at/#website"},"mainEntity":{"@id":"https://taltosdob.magyariskola.at/#event-series"},"inLanguage":"hu-AT"},
-    {"@type":"Organization","@id":"https://taltosdob.magyariskola.at/#program","name":"Világfa Sárkányai Gyermek Dobcsapat","alternateName":"Világfa Sárkányai Táltosdob Csapat","url":"https://taltosdob.magyariskola.at/","logo":"https://taltosdob.magyariskola.at/images/logo.svg","description":"A Regélő Fehér Táltos Hagyományőrző Egyesület bécsi gyerek dobcsapata és a Bécsi Magyar Iskola közös programja 6–14 éves gyermekeknek.","knowsAbout":["magyar néphagyomány","népi ritmusok","közös dobolás","magyar mondák","rovásírás"],"areaServed":{"@type":"City","name":"Wien","alternateName":"Bécs"},"location":{"@id":"https://taltosdob.magyariskola.at/#venue"},"contactPoint":{"@type":"ContactPoint","contactType":"helyi kapcsolattartó","name":"Hupczik Andrea","email":"taltosdob@gmail.com","telephone":"+436706539011","availableLanguage":["hu","de"]},"sameAs":["https://www.taltosdob.hu","https://www.facebook.com/taltosdob","https://open.spotify.com/artist/6OJS2Y2KntijVTQWhIv0bo"]},
-    {"@type":"EducationalOrganization","@id":"https://www.magyariskola.at/#school","name":"Bécsi Magyar Iskola","url":"https://www.magyariskola.at","email":"office@magyariskola.at"},
-    {"@type":"Organization","@id":"https://taltosdob.magyariskola.at/#taltos","name":"Regélő Fehér Táltos Hagyományőrző Egyesület","url":"https://www.taltosdob.hu","email":"taltosdob@gmail.com"},
-    {"@type":"Person","@id":"https://taltosdob.magyariskola.at/#hupczik-andrea","name":"Hupczik Andrea","jobTitle":"Helyi kapcsolattartó","email":"taltosdob@gmail.com","telephone":"+436706539011"},
-    {"@type":"Place","@id":"https://taltosdob.magyariskola.at/#venue","name":"Bécsi Magyar Iskola — Schwedenplatz","address":{"@type":"PostalAddress","streetAddress":"Schwedenplatz 2 / Laurenzerberg 5","addressLocality":"Wien","postalCode":"1010","addressCountry":"AT"}},
-    {"@type":"EventSeries","@id":"https://taltosdob.magyariskola.at/#event-series","name":"Világfa Sárkányai — 2026/2027-es gyermek dobcsapat","description":"Havi gyermekfoglalkozások Bécsben 6–14 éveseknek: magyar mondák, népi ritmusok, dobolás, ének, mozgás és közösségi játékok.","url":"https://taltosdob.magyariskola.at/#program","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","eventStatus":"https://schema.org/EventScheduled","location":{"@id":"https://taltosdob.magyariskola.at/#venue"},"organizer":[{"@id":"https://taltosdob.magyariskola.at/#taltos"},{"@id":"https://www.magyariskola.at/#school"}],"audience":{"@type":"PeopleAudience","suggestedMinAge":6,"suggestedMaxAge":14},"offers":[{"@type":"Offer","name":"Gyermekfoglalkozások féléves hozzájárulási díja","price":"70","priceCurrency":"EUR","url":"https://taltosdob.magyariskola.at/jelentkezes.html","availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Közös örömzene részvételi díja","price":"5","priceCurrency":"EUR","url":"https://taltosdob.magyariskola.at/jelentkezes.html","availability":"https://schema.org/InStock"}],"subEvent":[
-      {"@type":"Event","name":"Bemutató óra — A magyarok eredete","startDate":"2026-09-27T16:00:00+02:00","location":{"@id":"https://taltosdob.magyariskola.at/#venue"}},
-      {"@type":"Event","name":"Hunor és Magor","startDate":"2026-10-24T16:00:00+02:00","location":{"@id":"https://taltosdob.magyariskola.at/#venue"}},
-      {"@type":"Event","name":"Kerecseny — a fény születése","startDate":"2026-11-28T16:00:00+01:00","location":{"@id":"https://taltosdob.magyariskola.at/#venue"}},
-      {"@type":"Event","name":"Attila és a hun hagyomány","startDate":"2027-01-16T16:00:00+01:00","location":{"@id":"https://taltosdob.magyariskola.at/#venue"}},
-      {"@type":"Event","name":"Emese álma és Álmos születése","startDate":"2027-02-13T16:00:00+01:00","location":{"@id":"https://taltosdob.magyariskola.at/#venue"}}
-    ]}
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://taltosdob.magyariskola.at/#website",
+      "url": "https://taltosdob.magyariskola.at/",
+      "name": "Világfa Sárkányai — Gyermek Dobcsapat",
+      "inLanguage": "hu-AT",
+      "publisher": {
+        "@id": "https://www.magyariskola.at/#school"
+      },
+      "about": {
+        "@id": "https://taltosdob.magyariskola.at/#event-series"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://taltosdob.magyariskola.at/#webpage",
+      "url": "https://taltosdob.magyariskola.at/",
+      "name": "Magyar gyermek dobcsapat Bécsben | Világfa Sárkányai",
+      "isPartOf": {
+        "@id": "https://taltosdob.magyariskola.at/#website"
+      },
+      "mainEntity": {
+        "@id": "https://taltosdob.magyariskola.at/#event-series"
+      },
+      "inLanguage": "hu-AT"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://taltosdob.magyariskola.at/#program",
+      "name": "Világfa Sárkányai Gyermek Dobcsapat",
+      "alternateName": "Világfa Sárkányai Táltosdob Csapat",
+      "url": "https://taltosdob.magyariskola.at/",
+      "logo": "https://taltosdob.magyariskola.at/images/logo.svg",
+      "description": "A Regélő Fehér Táltos Hagyományőrző Egyesület bécsi gyerek dobcsapata és a Bécsi Magyar Iskola közös programja 6–14 éves gyermekeknek.",
+      "knowsAbout": [
+        "magyar néphagyomány",
+        "népi ritmusok",
+        "közös dobolás",
+        "magyar mondák",
+        "rovásírás"
+      ],
+      "areaServed": {
+        "@type": "City",
+        "name": "Wien",
+        "alternateName": "Bécs"
+      },
+      "location": {
+        "@id": "https://taltosdob.magyariskola.at/#venue"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "helyi kapcsolattartó",
+        "name": "Hupczik Andrea",
+        "email": "taltosdob@gmail.com",
+        "telephone": "+436706539011",
+        "availableLanguage": [
+          "hu",
+          "de"
+        ]
+      },
+      "sameAs": [
+        "https://www.taltosdob.hu",
+        "https://www.facebook.com/taltosdob",
+        "https://open.spotify.com/artist/6OJS2Y2KntijVTQWhIv0bo"
+      ]
+    },
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://www.magyariskola.at/#school",
+      "name": "Bécsi Magyar Iskola",
+      "url": "https://www.magyariskola.at",
+      "email": "office@magyariskola.at"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://taltosdob.magyariskola.at/#taltos",
+      "name": "Regélő Fehér Táltos Hagyományőrző Egyesület",
+      "url": "https://www.taltosdob.hu",
+      "email": "taltosdob@gmail.com"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tanarok.magyariskola.at/#hupczik-andrea",
+      "name": "Hupczik Andrea",
+      "jobTitle": "Foglalkozásvezető és helyi kapcsolattartó",
+      "email": "taltosdob@gmail.com",
+      "telephone": "+436706539011",
+      "url": "https://tanarok.magyariskola.at/#hupczik-andrea"
+    },
+    {
+      "@type": "Place",
+      "@id": "https://taltosdob.magyariskola.at/#venue",
+      "name": "Bécsi Magyar Iskola — Schwedenplatz",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Schwedenplatz 2 / Laurenzerberg 5",
+        "addressLocality": "Wien",
+        "postalCode": "1010",
+        "addressCountry": "AT"
+      }
+    },
+    {
+      "@type": "EventSeries",
+      "@id": "https://taltosdob.magyariskola.at/#event-series",
+      "name": "Világfa Sárkányai — 2026/2027-es gyermek dobcsapat",
+      "description": "Havi gyermekfoglalkozások Bécsben 6–14 éveseknek: magyar mondák, népi ritmusok, dobolás, ének, mozgás és közösségi játékok.",
+      "url": "https://taltosdob.magyariskola.at/#program",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@id": "https://taltosdob.magyariskola.at/#venue"
+      },
+      "organizer": [
+        {
+          "@id": "https://taltosdob.magyariskola.at/#taltos"
+        },
+        {
+          "@id": "https://www.magyariskola.at/#school"
+        }
+      ],
+      "audience": {
+        "@type": "PeopleAudience",
+        "suggestedMinAge": 6,
+        "suggestedMaxAge": 14
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Gyermekfoglalkozások féléves hozzájárulási díja",
+          "price": "70",
+          "priceCurrency": "EUR",
+          "url": "https://taltosdob.magyariskola.at/jelentkezes.html",
+          "availability": "https://schema.org/InStock"
+        }
+      ],
+      "subEvent": [
+        {
+          "@type": "Event",
+          "name": "Bemutató óra — A magyarok eredete",
+          "startDate": "2026-09-27T16:00:00+02:00",
+          "location": {
+            "@id": "https://taltosdob.magyariskola.at/#venue"
+          }
+        },
+        {
+          "@type": "Event",
+          "name": "Hunor és Magor",
+          "startDate": "2026-10-24T16:00:00+02:00",
+          "location": {
+            "@id": "https://taltosdob.magyariskola.at/#venue"
+          }
+        },
+        {
+          "@type": "Event",
+          "name": "Kerecseny — a fény születése",
+          "startDate": "2026-11-28T16:00:00+01:00",
+          "location": {
+            "@id": "https://taltosdob.magyariskola.at/#venue"
+          }
+        },
+        {
+          "@type": "Event",
+          "name": "Attila és a hun hagyomány",
+          "startDate": "2027-01-16T16:00:00+01:00",
+          "location": {
+            "@id": "https://taltosdob.magyariskola.at/#venue"
+          }
+        },
+        {
+          "@type": "Event",
+          "name": "Emese álma és Álmos születése",
+          "startDate": "2027-02-13T16:00:00+01:00",
+          "location": {
+            "@id": "https://taltosdob.magyariskola.at/#venue"
+          }
+        },
+        {
+          "@type": "Event",
+          "name": "Világfa Sárkányai gyermekfoglalkozás",
+          "startDate": "2027-03-13T16:00:00+01:00",
+          "location": {
+            "@id": "https://taltosdob.magyariskola.at/#venue"
+          }
+        },
+        {
+          "@type": "Event",
+          "name": "Világfa Sárkányai gyermekfoglalkozás",
+          "startDate": "2027-04-17T16:00:00+02:00",
+          "location": {
+            "@id": "https://taltosdob.magyariskola.at/#venue"
+          }
+        },
+        {
+          "@type": "Event",
+          "name": "Világfa Sárkányai gyermekfoglalkozás",
+          "startDate": "2027-05-22T16:00:00+02:00",
+          "location": {
+            "@id": "https://taltosdob.magyariskola.at/#venue"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "EventSeries",
+      "@id": "https://www.magyariskola.at/event-details/oromzene-2026#event-series",
+      "name": "Együtt dobban Bécs – Közös örömzene",
+      "url": "https://www.magyariskola.at/event-details/oromzene-2026",
+      "description": "Külön, állandó BMI partnerprogram a Világfa Sárkányai napjain, 18:00 órai kezdéssel. Felnőtteknek is ajánlható; zenei vagy dobos előképzettség nem szükséges.",
+      "inLanguage": "hu-AT",
+      "organizer": {
+        "@id": "https://www.magyariskola.at/#school"
+      },
+      "performer": {
+        "@id": "https://tanarok.magyariskola.at/#hupczik-andrea"
+      },
+      "location": {
+        "@id": "https://taltosdob.magyariskola.at/#venue"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "5",
+        "priceCurrency": "EUR",
+        "url": "https://www.magyariskola.at/event-details/oromzene-2026"
+      }
+    }
   ]
 }
 </script>
