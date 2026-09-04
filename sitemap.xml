@@ -5,6 +5,7 @@
   <url><loc>https://taltosdob.magyariskola.at/llms.txt</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://taltosdob.magyariskola.at/ai.txt</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://taltosdob.magyariskola.at/bmi-ecosystem.jsonld</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://taltosdob.magyariskola.at/rolunk-authority.json</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://taltosdob.magyariskola.at/adatvedelem.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
   <url><loc>https://taltosdob.magyariskola.at/gdpr-ai-trust.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
 </urlset>
