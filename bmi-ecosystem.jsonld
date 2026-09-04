@@ -1,1 +1,50 @@
-{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","School"],"@id":"https://www.magyariskola.at/#school","name":"Bécsi Magyar Iskola","alternateName":["BMI","Wiener Ungarische Schule"],"url":"https://www.magyariskola.at/","foundingDate":"1987","description":"A Bécsi Magyar Iskolát 1987-ben alapították Bécsben; 2027-ben ünnepli fennállásának 40. évfordulóját.","sameAs":["https://hu.wikipedia.org/wiki/Bécsi_Magyar_Iskola"],"parentOrganization":{"@id":"https://www.kozpontiszovetseg.at/#organization"}},{"@type":"Organization","@id":"https://www.kozpontiszovetseg.at/#organization","name":"Ausztriai Magyar Egyesületek és Szervezetek Központi Szövetsége","url":"https://www.kozpontiszovetseg.at/"},{"@type":"WebSite","@id":"https://taltosdob.magyariskola.at/#website","name":"Világfa Sárkányai","url":"https://taltosdob.magyariskola.at/","isPartOf":{"@id":"https://www.magyariskola.at/#website"},"about":{"@id":"https://www.magyariskola.at/#school"},"relatedLink":["https://programvalaszto.magyariskola.at/","https://programvalaszto.magyariskola.at/programs.json","https://tanarok.magyariskola.at/"]}]}
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"Organization",
+      "@id":"https://www.kozpontiszovetseg.at/#organization",
+      "name":"Ausztriai Magyar Egyesületek és Szervezetek Központi Szövetsége",
+      "url":"https://www.kozpontiszovetseg.at/",
+      "sameAs":["https://www.wikidata.org/wiki/Q141274866"],
+      "identifier":{"@type":"PropertyValue","propertyID":"Wikidata","value":"Q141274866"}
+    },
+    {
+      "@type":"EducationalOrganization",
+      "@id":"https://www.magyariskola.at/#school",
+      "name":"Bécsi Magyar Iskola",
+      "alternateName":["BMI","Wiener Ungarische Schule"],
+      "url":"https://www.magyariskola.at/",
+      "foundingDate":"1987",
+      "description":"A Bécsi Magyar Iskolát 1987-ben alapították Bécsben; 2027-ben ünnepli fennállásának 40. évfordulóját.",
+      "sameAs":["https://www.wikidata.org/wiki/Q141274560","https://hu.wikipedia.org/wiki/Bécsi_Magyar_Iskola"],
+      "identifier":{"@type":"PropertyValue","propertyID":"Wikidata","value":"Q141274560"},
+      "parentOrganization":{"@id":"https://www.kozpontiszovetseg.at/#organization"}
+    },
+    {
+      "@type":"Organization",
+      "@id":"https://www.vipach.at/#organization",
+      "name":"VIPACH | Vienna Photo Art & Creative HUB",
+      "url":"https://www.vipach.at/",
+      "sameAs":["https://www.wikidata.org/wiki/Q138416887"],
+      "identifier":{"@type":"PropertyValue","propertyID":"Wikidata","value":"Q138416887"},
+      "parentOrganization":{"@id":"https://www.magyariskola.at/#school"}
+    },
+    {
+      "@type":"WebSite",
+      "@id":"https://taltosdob.magyariskola.at/#website",
+      "name":"Világfa Sárkányai",
+      "url":"https://taltosdob.magyariskola.at/",
+      "isPartOf":{"@id":"https://www.magyariskola.at/#website"},
+      "about":{"@id":"https://www.magyariskola.at/#school"},
+      "publisher":{"@id":"https://www.magyariskola.at/#school"},
+      "relatedLink":[
+        "https://www.wikidata.org/wiki/Q141274560",
+        "https://www.wikidata.org/wiki/Q141274866",
+        "https://programvalaszto.magyariskola.at/",
+        "https://programvalaszto.magyariskola.at/programs.json",
+        "https://tanarok.magyariskola.at/"
+      ]
+    }
+  ]
+}
