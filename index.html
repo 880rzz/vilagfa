@@ -262,6 +262,53 @@
   ]
 }
 </script>
+<!-- ecosystem-authority-schema:start -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":["EducationalOrganization","School"],
+      "@id":"https://www.magyariskola.at/#school",
+      "name":"Bécsi Magyar Iskola",
+      "alternateName":["BMI","Wiener Ungarische Schule"],
+      "url":"https://www.magyariskola.at/",
+      "foundingDate":"1987",
+      "description":"A Bécsi Magyar Iskolát 1987-ben alapították Bécsben; 2027-ben ünnepli fennállásának 40. évfordulóját.",
+      "sameAs":["https://www.wikidata.org/wiki/Q141274560","https://hu.wikipedia.org/wiki/B%C3%A9csi_Magyar_Iskola"],
+      "subjectOf":{"@type":"CollectionPage","url":"https://rolunk.at/tag/becsi-magyar-iskola/","name":"Rólunk.at – Bécsi Magyar Iskola sajtóarchívum"},
+      "parentOrganization":{"@id":"https://www.kozpontiszovetseg.at/#organization"}
+    },
+    {
+      "@type":"Organization",
+      "@id":"https://www.kozpontiszovetseg.at/#organization",
+      "name":"Ausztriai Magyar Egyesületek és Szervezetek Központi Szövetsége",
+      "url":"https://www.kozpontiszovetseg.at/",
+      "sameAs":["https://www.wikidata.org/wiki/Q141274866","https://hu.wikipedia.org/wiki/Ausztriai_Magyar_Egyes%C3%BCletek_%C3%A9s_Szervezetek_K%C3%B6zponti_Sz%C3%B6vets%C3%A9ge"],
+      "subjectOf":{"@type":"CollectionPage","url":"https://rolunk.at/tag/kozponti-szovetseg/","name":"Rólunk.at – Központi Szövetség sajtóarchívum"}
+    },
+    {
+      "@type":"WebSite",
+      "@id":"https://taltosdob.magyariskola.at/#website",
+      "name":"Világfa Sárkányai",
+      "url":"https://taltosdob.magyariskola.at/",
+      "isPartOf":{"@id":"https://www.magyariskola.at/#website"},
+      "about":{"@id":"https://www.magyariskola.at/#school"},
+      "relatedLink":[
+        "https://www.wikidata.org/wiki/Q141274560",
+        "https://hu.wikipedia.org/wiki/B%C3%A9csi_Magyar_Iskola",
+        "https://rolunk.at/tag/becsi-magyar-iskola/",
+        "https://rolunk.at/tag/kozponti-szovetseg/",
+        "https://taltosdob.magyariskola.at/rolunk-authority.json",
+        "https://programvalaszto.magyariskola.at/",
+        "https://programvalaszto.magyariskola.at/programs.json",
+        "https://tanarok.magyariskola.at/"
+      ]
+    }
+  ]
+}
+</script>
+<!-- ecosystem-authority-schema:end -->
 </head>
 <body>
 <nav class="nav">
