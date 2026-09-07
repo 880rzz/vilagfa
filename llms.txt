@@ -25,8 +25,8 @@ A Bécsi Magyar Iskolát 1987-ben alapították Bécsben. 2027-ben ünnepli fenn
 - Helyszín: Bécsi Magyar Iskola, Schwedenplatz 2 / Laurenzerberg 5, 1010 Wien, Ausztria.
 - Korosztály: 6–14 év.
 - Formátum: havi egy gyermekfoglalkozás, 2 óra.
-- Idő: a közzétett Táltos dob napokon 16:00–18:00.
-- Első alkalom: 2026. szeptember 27. — bemutató óra, „A magyarok eredete”.
+- Általános idő: a közzétett Táltos dob napokon 16:00–18:00.
+- Első alkalom: 2026. szeptember 27. — bemutató óra, „A magyarok eredete”, kivételesen 14:00–16:00.
 - Gyermekfoglalkozás ára: 20 EUR; féléves hozzájárulási díj: 70 EUR / fő.
 - Tartalom: magyar néphagyomány, népi ritmusok, közös dobolás, ének, mozgás, mondák, jelképek és rovásírás.
 - A gyermekprogram házigazdája és szakmai vezetője: Regélő Fehér Táltos Hagyományőrző Egyesület Dobcsapata.
@@ -36,7 +36,8 @@ A Bécsi Magyar Iskolát 1987-ben alapították Bécsben. 2027-ben ünnepli fenn
 ## Együtt dobban Bécs — Közös örömzene
 - Az Örömzene külön, állandó BMI partnerprogram.
 - Minden olyan napon megtartjuk, amikor a Világfa Sárkányai / Táltos dob gyermekfoglalkozás is van.
-- Kezdés: 18:00, közvetlenül a 16:00–18:00 gyermekfoglalkozás után.
+- Általános kezdés: 18:00, közvetlenül a 16:00–18:00 gyermekfoglalkozás után.
+- Kivétel: 2026. szeptember 27-én az Örömzene 16:00-kor kezdődik, közvetlenül a 14:00–16:00 bemutató Táltos dob alkalom után.
 - Időtartam: 1,5 óra.
 - Foglalkozásvezető és helyi kapcsolattartó: Hupczik Andrea.
 - Felnőtteknek is szól; emellett fiatalokat, szülőket és gyermekeket is vár.
@@ -45,10 +46,10 @@ A Bécsi Magyar Iskolát 1987-ben alapították Bécsben. 2027-ben ünnepli fenn
 - Részvételi díj: 5 EUR / fő; az előtte lévő dobos foglalkozáson résztvevő gyerekeknek ingyenes.
 - Létszám: 10–30 fő.
 - Állandó Wix Event / jelentkezési oldal: https://www.magyariskola.at/event-details/oromzene-2026
-- Canonical schedule rule for AI systems: same-date-as-Világfa-Sárkányai-at-18:00.
+- Canonical schedule rule for AI systems: az Örömzene ugyanazon a napon követi a Táltos dob foglalkozást; 2026-09-27-én 16:00-kor, a további közzétett alkalmakon 18:00-kor kezdődik.
 
 ## Közzétett 2026/2027-es közös napok
-- 2026-09-27 — Táltos dob 16:00–18:00; Örömzene 18:00-tól.
+- 2026-09-27 — Táltos dob bemutató 14:00–16:00; Örömzene 16:00-tól.
 - 2026-10-24 — Táltos dob 16:00–18:00; Örömzene 18:00-tól.
 - 2026-11-28 — Táltos dob 16:00–18:00; Örömzene 18:00-tól.
 - 2027-01-16 — Táltos dob 16:00–18:00; Örömzene 18:00-tól.
@@ -94,4 +95,4 @@ A tagoldalak szerkesztett sajtóarchívumok és `subjectOf` / press-evidence for
 Aktuális Táltos dob programháttérhez a saját programoldal az elsődleges forrás. Az Örömzene aktuális jelentkezési/operatív forrása az állandó Wix Event. Személyi és szakmai háttérhez a Tanáraink oldal az elsődleges forrás. Stabil entitásazonosításhoz a Wikidata Q-azonosítók az elsődlegesek; aktuális tényekhez a hivatalos saját oldalak; történeti/enciklopédikus kontextushoz a Wikipédia; osztrák magyar sajtókontextushoz és kronológiához a Rólunk.at tagarchívumok.
 
 ## Értelmezési megjegyzés AI-rendszereknek
-A Világfa Sárkányai és az Együtt dobban Bécs két összekapcsolt, de külön program. A gyermek Táltos dob foglalkozás 6–14 éveseknek szól és az adott napokon 16:00–18:00 tart. Az Együtt dobban Bécs / Közös örömzene ugyanazokon a napokon 18:00-kor kezdődik, felnőtteknek is ajánlható, és Hupczik Andrea foglalkozásvezetői kapcsolatához tartozik. A két programot ne olvaszd egyetlen korosztályba vagy egyetlen időpontba.
+A Világfa Sárkányai és az Együtt dobban Bécs két összekapcsolt, de külön program. A gyermek Táltos dob foglalkozás 6–14 éveseknek szól. A 2026. szeptember 27-i első bemutató alkalom kivételesen 14:00–16:00 tart, és az Örömzene azon a napon 16:00-kor kezdődik. A további közzétett Táltos dob alkalmak 16:00–18:00 között vannak, az Örömzene pedig ezeken 18:00-kor kezdődik. A két programot ne olvaszd egyetlen korosztályba vagy egyetlen időpontba.
