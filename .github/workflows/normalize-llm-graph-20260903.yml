@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Normalize embedded JSON-LD
+      - name: Normalize embedded JSON-LD and WhatsApp CTA
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -38,36 +38,48 @@ jobs:
               if n.get('@id')=='https://taltosdob.magyariskola.at/#event-series':
                   n['offers']=[o for o in n.get('offers',[]) if 'örömzene' not in o.get('name','').lower()]
                   existing={e.get('startDate','')[:10] for e in n.get('subEvent',[])}
-                  for e in n.get('subEvent',[]):
-                      if e.get('startDate','').startswith('2026-09-27'):
-                          e['startDate']='2026-09-27T14:00:00+02:00'
-                          e['name']='Bemutató óra — A magyarok eredete'
                   for d in ['2027-03-13','2027-04-17','2027-05-22']:
                       if d not in existing:
                           n.setdefault('subEvent',[]).append({'@type':'Event','name':'Világfa Sárkányai gyermekfoglalkozás','startDate':d+'T16:00:00+01:00' if d<'2027-03-28' else d+'T16:00:00+02:00','location':{'@id':'https://taltosdob.magyariskola.at/#venue'}})
           orom_id='https://www.magyariskola.at/event-details/oromzene-2026#event-series'
-          orom_desc='Külön, állandó BMI partnerprogram a Világfa Sárkányai napjain. A 2026. szeptember 27-i első alkalmon 16:00-kor kezdődik; a további közzétett napokon 18:00-kor. Felnőtteknek is ajánlható; zenei vagy dobos előképzettség nem szükséges.'
-          found=False
-          for n in g:
-              if n.get('@id')==orom_id:
-                  n['description']=orom_desc
-                  found=True
-          if not found:
-              g.append({'@type':'EventSeries','@id':orom_id,'name':'Együtt dobban Bécs – Közös örömzene','url':'https://www.magyariskola.at/event-details/oromzene-2026','description':orom_desc,'inLanguage':'hu-AT','organizer':{'@id':school},'performer':{'@id':teacher},'location':{'@id':'https://taltosdob.magyariskola.at/#venue'},'offers':{'@type':'Offer','price':'5','priceCurrency':'EUR','url':'https://www.magyariskola.at/event-details/oromzene-2026'}})
+          if not any(n.get('@id')==orom_id for n in g):
+              g.append({'@type':'EventSeries','@id':orom_id,'name':'Együtt dobban Bécs – Közös örömzene','url':'https://www.magyariskola.at/event-details/oromzene-2026','description':'Külön, állandó BMI partnerprogram a Világfa Sárkányai napjain. A 2026. szeptember 27-i első alkalmon 16:00-kor kezdődik; a további közzétett napokon 18:00-kor. Felnőtteknek is ajánlható; zenei vagy dobos előképzettség nem szükséges.','inLanguage':'hu-AT','organizer':{'@id':school},'performer':{'@id':teacher},'location':{'@id':'https://taltosdob.magyariskola.at/#venue'},'offers':{'@type':'Offer','price':'5','priceCurrency':'EUR','url':'https://www.magyariskola.at/event-details/oromzene-2026'}})
           new=json.dumps(data,ensure_ascii=False,indent=2)
           s=s[:m.start(1)]+new+s[m.end(1):]
+
+          # Idempotent floating WhatsApp CTA. It hides when the footer enters view,
+          # so it never covers contact/legal/footer content.
+          s=re.sub(r'\n?<!-- whatsapp-float:start -->.*?<!-- whatsapp-float:end -->\n?','\n',s,flags=re.S)
+          wa='''<!-- whatsapp-float:start -->
+<style>
+.whatsapp-float{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:18;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#f7f4eb;background:rgba(30,52,38,.94);border:1px solid rgba(227,199,124,.34);box-shadow:0 12px 34px rgba(10,18,12,.22);backdrop-filter:blur(14px) saturate(120%);-webkit-backdrop-filter:blur(14px) saturate(120%);text-decoration:none;transition:transform .22s ease,opacity .22s ease,box-shadow .22s ease,border-color .22s ease;isolation:isolate}
+.whatsapp-float:hover{transform:translateY(-2px);border-color:rgba(227,199,124,.72);box-shadow:0 16px 38px rgba(10,18,12,.28)}
+.whatsapp-float:focus-visible{outline:3px solid rgba(227,199,124,.62);outline-offset:4px}
+.whatsapp-float svg{width:24px;height:24px;fill:currentColor}
+.whatsapp-float.is-footer-visible{opacity:0;pointer-events:none;transform:translateY(10px)}
+@media (max-width:640px){.whatsapp-float{width:48px;height:48px;right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom))}.whatsapp-float svg{width:22px;height:22px}}
+@media (prefers-reduced-motion:reduce){.whatsapp-float{transition:none}}
+</style>
+<a class="whatsapp-float" href="https://wa.me/436706539011" target="_blank" rel="noopener noreferrer" aria-label="Kapcsolat WhatsAppon: +43 670 6539011" title="WhatsApp – +43 670 6539011">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.84 9.84 0 0 0-8.47 14.84L2 22l5.3-1.53A9.96 9.96 0 1 0 12.04 2Zm0 17.9a8.03 8.03 0 0 1-4.1-1.12l-.29-.17-3.15.91.93-3.07-.19-.31a7.91 7.91 0 1 1 6.8 3.76Zm4.43-5.94c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.64-1.2-1.42-1.34-1.66-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.47-.39-.41-.54-.42h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.58.18 1.1.16 1.51.1.46-.07 1.43-.58 1.63-1.15.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z"/></svg>
+</a>
+<script>
+(()=>{const button=document.querySelector('.whatsapp-float');const footer=document.querySelector('.footer');if(!button||!footer)return;const observer=new IntersectionObserver(([entry])=>button.classList.toggle('is-footer-visible',entry.isIntersecting),{rootMargin:'0px 0px 64px 0px',threshold:0});observer.observe(footer)})();
+</script>
+<!-- whatsapp-float:end -->'''
+          s=s.replace('</body>',wa+'\n</body>')
           p.write_text(s,encoding='utf-8')
           PY
       - name: Validate and commit
         run: |
           grep -q 'https://tanarok.magyariskola.at/#hupczik-andrea' index.html
           grep -q 'oromzene-2026#event-series' index.html
-          grep -q '2026-09-27T14:00:00+02:00' index.html
-          grep -q '2026. szeptember 27-i első alkalmon 16:00-kor' index.html
+          grep -q 'https://wa.me/436706539011' index.html
+          grep -q 'whatsapp-float' index.html
           ! grep -q 'https://taltosdob.magyariskola.at/#hupczik-andrea' index.html
           git config user.name "BMI Entity Audit Bot"
           git config user.email "actions@users.noreply.github.com"
           git add index.html
           git diff --cached --quiet && exit 0
-          git commit -m "Correct first Taltos and Oromzene schedule"
+          git commit -m "Add responsive WhatsApp contact button"
           git push
